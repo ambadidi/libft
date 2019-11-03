@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abadidi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/12 16:29:08 by abadidi           #+#    #+#             */
-/*   Updated: 2019/10/26 22:04:09 by abadidi          ###   ########.fr       */
+/*   Created: 2019/11/03 17:34:04 by abadidi           #+#    #+#             */
+/*   Updated: 2019/11/03 17:36:23 by abadidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+void	ft_putstr_fd(char *s, int fd)
 {
-	int		i;
-	char	*str;
-	int		a;
+	int i;
 
-	str = (char *)s;
-	a = ft_strlen(str);
-	i = a - 1;
-	while (i >= 0)
+	i = 0;
+	while (s[i])
 	{
-		if (str[i] == (char)c)
-			return (str + i);
-		i--;
+		ft_putchar_fd(s[i], fd);
+		i++;
 	}
-	if ((char)c == '\0')
-		return (str + a);
-	return (NULL);
 }

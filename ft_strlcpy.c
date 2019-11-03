@@ -6,7 +6,7 @@
 /*   By: abadidi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/12 17:44:55 by abadidi           #+#    #+#             */
-/*   Updated: 2019/10/14 19:24:24 by abadidi          ###   ########.fr       */
+/*   Updated: 2019/10/26 21:55:45 by abadidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,12 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 
 	i = 0;
 	tmp = ft_strlen(src);
-	while (src[i] && i < size - 1)
+	while (size != 0 && src[i] && i < size - 1)
 	{
 		dest[i] = src[i];
 		i++;
 	}
-	dest[i] = '\0';
+	if (size != 0)
+		dest[i] = '\0';
 	return (tmp);
 }

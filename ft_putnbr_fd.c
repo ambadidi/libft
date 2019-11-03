@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abadidi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/12 16:29:08 by abadidi           #+#    #+#             */
-/*   Updated: 2019/10/26 22:04:09 by abadidi          ###   ########.fr       */
+/*   Created: 2019/11/03 19:05:25 by abadidi           #+#    #+#             */
+/*   Updated: 2019/11/03 19:39:28 by abadidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+void	ft_putnbr_fd(int n, int fd)
 {
-	int		i;
-	char	*str;
-	int		a;
+	unsigned int	my_nb;
 
-	str = (char *)s;
-	a = ft_strlen(str);
-	i = a - 1;
-	while (i >= 0)
+	if (n < 0)
 	{
-		if (str[i] == (char)c)
-			return (str + i);
-		i--;
+		ft_putchar_fd('-', fd);
+		my_nb = -n;
 	}
-	if ((char)c == '\0')
-		return (str + a);
-	return (NULL);
+	else
+		my_nb = n;
+	if (my_nb / 10)
+		ft_putnbr_fd(my_nb / 10, fd);
+	ft_putchar_fd(my_nb % 10 + '0', fd);
 }
