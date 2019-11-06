@@ -6,9 +6,13 @@
 /*   By: abadidi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/14 13:10:55 by abadidi           #+#    #+#             */
-/*   Updated: 2019/11/03 19:50:20 by abadidi          ###   ########.fr       */
+/*   Updated: 2019/11/06 16:33:32 by abadidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef LIBFT_H
+
+# define LIBFT_H
 
 #include <string.h>
 #include <stdlib.h>
@@ -45,5 +49,6 @@ char	*ft_itoa(int n);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
-void	ft_putendln_fd(char *s, int fd);
+void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
+#endif

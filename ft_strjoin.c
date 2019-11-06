@@ -6,7 +6,7 @@
 /*   By: abadidi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 23:11:07 by abadidi           #+#    #+#             */
-/*   Updated: 2019/10/22 20:58:18 by abadidi          ###   ########.fr       */
+/*   Updated: 2019/11/03 22:00:51 by abadidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	dest = NULL;
 	len = 0;
+	if (!s1 || !s2)
+		return (NULL);
 	dest = malloc(1 + ft_strlen(s1) + ft_strlen(s2));
 	if (!dest)
 		return (NULL);

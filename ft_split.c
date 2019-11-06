@@ -3,93 +3,81 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abadidi <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: abadidi <abadidi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 20:15:14 by abadidi           #+#    #+#             */
-/*   Updated: 2019/10/30 22:01:17 by abadidi          ###   ########.fr       */
+/*   Updated: 2019/11/04 20:54:44 by abadidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		is_char(char c1, char c)
+static int		ft_nbofwords(char *s, char c)
 {
-	return (c1 == c);
-}
+	int		i;
+	int		is_word;
 
-int		count_words(char const *str, char c)
-{
-	int word;
-	int nb_words;
-	int i;
-
-	word = 0;
-	nb_words = 0;
 	i = 0;
-	while (str[i])
+	is_word = 0;
+	while (*s)
 	{
-		if (!is_char(str[i], c) && word == 0)
+		if (is_word == 0 && *s != c)
 		{
-			nb_words++;
-			word = 1;
+			is_word = 1;
+			i++;
 		}
-		else if (is_char(str[i], c))
-			word = 0;
-		i++;
+		else if (is_word == 1 && *s == c)
+			is_word = 0;
+		s++;
 	}
-	return (nb_words);
-}
-
-int		calculate_length(char const *str, char c)
-{
-	int i;
-
-	i = 0;
-	while (str[i] && !is_char(str[i], c))
-		i++;
 	return (i);
 }
 
-char	*ft_strncpy(char *dest, char const *src, unsigned int n)
+static int		ft_strlenword(char *s, char c)
 {
-	unsigned int i;
+	int len;
 
-	i = 0;
-	while (src[i] != '\0' && i < n)
+	len = 0;
+	while (*s != c && *s != '\0')
 	{
-		dest[i] = src[i];
-		i++;
+		len++;
+		s++;
 	}
-	if (src[i] == '\0')
-		dest[i] = '\0';
-	return (dest);
+	return (len);
 }
 
-char	**ft_split(char const *s, char c)
+static void		*my_free(char **tab, int i)
 {
-	char	**res;
-	int		word;
-	int		i;
-	int		length;
-	int		size;
-
-	res = (char **)malloc(count_words(s, c) * sizeof(char *) + 1);
-	word = 0;
-	size = 0;
-	i = -1;
-	while (s[++i] != '\0')
+	while (i-- > 0)
 	{
-		if (!is_char(s[i], c) && word == 0)
-		{
-			word = 1;
-			length = calculate_length(&s[i], c);
-			res[size] = (char *)malloc((length + 1) * sizeof(char));
-			res[size] = ft_strncpy(res[size], &s[i], length);
-			++size;
-		}
-		else if (is_char(s[i], c))
-			word = 0;
+		free(tab[i]);
 	}
-	res[size] = 0;
-	return (res);
+	free(tab);
+	return (NULL);
+}
+
+char			**ft_split(char const *s, char c)
+{
+	int		nb_ofwords;
+	char	**tab;
+	int		i;
+
+	if (!s)
+		return (NULL);
+	nb_ofwords = ft_nbofwords((char *)s, c);
+	if (!(tab = (char **)malloc((nb_ofwords + 1) * sizeof(char*))))
+		return (NULL);
+	i = 0;
+	while (nb_ofwords--)
+	{
+		while (*s == c && *s != '\0')
+			s++;
+		tab[i] = ft_substr((char *)s, 0, ft_strlenword((char *)s, c));
+		if (!tab[i])
+			return (my_free(tab, i));
+		s = s + ft_strlenword((char *)s, c);
+		i++;
+	}
+	tab[i] = NULL;
+	return (tab);
 }

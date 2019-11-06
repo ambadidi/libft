@@ -6,7 +6,7 @@
 /*   By: abadidi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/12 17:09:16 by abadidi           #+#    #+#             */
-/*   Updated: 2019/10/15 23:11:22 by abadidi          ###   ########.fr       */
+/*   Updated: 2019/11/04 20:40:28 by abadidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	size_t i;
 
 	i = 0;
+	if (n == 0)
+		return (0);
 	while ((*s1 || *s2) && (i < n))
 	{
 		if (*s1 > *s2)

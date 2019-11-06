@@ -6,7 +6,7 @@
 /*   By: abadidi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 22:03:13 by abadidi           #+#    #+#             */
-/*   Updated: 2019/11/01 22:29:46 by abadidi          ###   ########.fr       */
+/*   Updated: 2019/11/03 22:10:17 by abadidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,10 @@ char	*ft_itoa(int nbr)
 	sign = 0;
 	n = nbr;
 	len = int_length(n);
-	res = malloc(int_length(n) * sizeof(int) + 1);
+	res = malloc(int_length(n) * sizeof(char) + 1);
 	if (res == NULL)
 		return (0);
-	res[len + 1] = '\0';
+	res[len] = '\0';
 	if (n < 0)
 	{
 		sign = 1;

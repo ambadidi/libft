@@ -6,7 +6,7 @@
 /*   By: abadidi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/12 19:07:29 by abadidi           #+#    #+#             */
-/*   Updated: 2019/10/26 21:47:40 by abadidi          ###   ########.fr       */
+/*   Updated: 2019/11/04 20:38:27 by abadidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,10 @@ size_t	ft_strlcat(char *dest, const char *src, size_t size)
 	int		i;
 
 	i = -1;
+	if (size == 0)
+	{
+		return (ft_strlen(src));
+	}
 	ldest = ft_strlen(dest);
 	lsrc = ft_strlen(src);
 	if (ldest >= size)
