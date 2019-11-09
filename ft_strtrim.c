@@ -6,7 +6,7 @@
 /*   By: abadidi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 21:08:18 by abadidi           #+#    #+#             */
-/*   Updated: 2019/10/26 22:33:21 by abadidi          ###   ########.fr       */
+/*   Updated: 2019/11/09 13:07:14 by abadidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ char				*ft_strtrim(char const *s1, char const *set)
 	left = ltrim(s1, set);
 	right = rtrim(s1, set);
 	a = right - left + 1;
-	if (left >= right)
+	if (left > right)
 		return (ft_strdup(""));
 	dest = malloc(a * sizeof(char) + 1);
 	if (!dest)
